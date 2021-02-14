@@ -2,9 +2,7 @@
 <div class="home">
   <v-container fill-height fluid class="pa-2 mt-1">
     <v-row align="auto">
-      <v-col :cols="8" height="100%" id="map">
-        <!-- <v-img height=100% src="../assets/map.png"></v-img> <\!---Needs to be replaced by map component--\-> -->
-      </v-col>
+      <Map cols="col col-8" />
       <v-col :cols="4">
         <v-container>
           <v-row class="pa-2 mb-3" >
@@ -86,40 +84,9 @@ import MEAStatus from '@/components/MEA/MEAStatus.vue'
 import ERUStatus from '@/components/ERU/ERUStatus.vue'
 import MACStatus from '@/components/MAC/MACStatus.vue'
 import GeneralStage from '@/components/GeneralStage.vue'
-import mapboxgl from 'mapbox-gl'
+import Map from '@/components/Map.vue'
 
 export default {   
-    head () {
-        return  {
-            script: [
-                { src: 'https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js' }
-            ],
-            link: [
-                { 
-                    href: 'https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css',
-                    rel: 'stylesheet'
-                }
-            ]
-        }
-    },
-    methods: {
-        map: function() {
-            // Creates and adds a mapbox to the element with id "map"
-            mapboxgl.accessToken = 'pk.eyJ1IjoiaGxpbjkxIiwiYSI6ImNrbDQ2MjY4NzE0ZXEycHFpaXBya2tvN3gifQ.Tqa8iLUqXeKZQ8SmhLoRtg';
-            
-            return new mapboxgl.Map({
-                container: 'map',
-                center: [-74.5, 40],
-                zoom: 9,
-                style: 'mapbox://styles/mapbox/streets-v9'
-            });
-        }
-    },
-    mounted() {
-        let map = this.map()
-        map.addControl(new mapboxgl.NavigationControl());
-    },
-    
     name: '',
     components: {
         Emergency,
@@ -129,7 +96,8 @@ export default {
         MEAStatus,
         ERUStatus,
         MACStatus,
-        GeneralStage
+        GeneralStage,
+        Map
     }
 }
 </script>
@@ -137,10 +105,5 @@ export default {
 <style>
 .scrollable:hover, .scrollable:active, .scrollable:focus {
     overflow-y: auto !important;
-}
-
-.map {
-    width: 100%;
-    height: 100%;
 }
 </style>
