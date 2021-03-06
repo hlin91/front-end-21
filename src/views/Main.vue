@@ -2,7 +2,9 @@
 <div class="home">
   <v-container fill-height fluid class="pa-2 mt-1">
     <v-row align="auto">
-      <Map cols="col col-8" />
+      <Map cols="col col-8" center_lat="33.932116" center_long="-117.630109" zoom="9"
+           SW_bound_lat="33.93154919990249" SW_bound_long="-117.63616828159178"
+           NE_bound_lat="33.93569086311143" NE_bound_long="-117.6263621141112" />
       <v-col :cols="4">
         <v-container>
           <v-row class="pa-2 mb-3" >
